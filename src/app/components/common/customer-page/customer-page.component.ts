@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import CustomerDTO from "../../../dtos/CustomerDTO";
 
 @Component({
   selector: 'app-customer-page',
@@ -38,6 +39,12 @@ export class CustomerPageComponent implements OnInit {
   }
 
   saveCustomer() {
-    console.log(this.customerForm);
+    const customer = new CustomerDTO(
+      this.customerForm.get('customerId')?.value,
+      this.customerForm.get('customerName')?.value,
+      Number(this.customerForm.get('customerSalary')?.value),
+      this.customerForm.get('customerAddress')?.value
+    );
+    console.log(customer);
   }
 }
