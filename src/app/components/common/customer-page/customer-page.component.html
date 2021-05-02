@@ -5,21 +5,33 @@
     <div class="col-12 col-sm-8 col-md-4 col-lg-3">
       <label for="customerId" class="form-label">Customer Id</label>
       <input formControlName="customerId" type="text" class="form-control" id="customerId">
+      <p class="alert alert-danger" *ngIf="
+        customerForm.get('customerId')?.touched &&
+        customerForm.get('customerId')?.invalid" style="margin-top: 3px">Customer Id is Required.</p>
     </div>
     <br>
     <div class="col-12 col-sm-8 col-md-4 col-lg-3">
       <label for="customerName" class="form-label">Customer Name</label>
       <input formControlName="customerName" type="text" class="form-control" id="customerName">
+      <p class="alert alert-danger" *ngIf="
+        customerForm.get('customerName')?.touched &&
+        customerForm.get('customerName')?.invalid" style="margin-top: 3px">Customer Name is Required.</p>
     </div>
     <br>
     <div class="col-12 col-sm-8 col-md-4 col-lg-3">
       <label for="customerSalary" class="form-label">Customer Salary</label>
       <input formControlName="customerSalary" type="number" class="form-control" id="customerSalary">
+      <p class="alert alert-danger" *ngIf="
+        customerForm.get('customerSalary')?.touched &&
+        customerForm.get('customerSalary')?.invalid" style="margin-top: 3px">Customer Salary is Required.</p>
     </div>
     <br>
     <div class="mb-3">
       <label for="customerAddress" class="form-label">Customer Address</label>
       <textarea formControlName="customerAddress" class="form-control" id="customerAddress" rows="3"></textarea>
+      <p class="alert alert-danger" *ngIf="
+        customerForm.get('customerAddress')?.touched &&
+        customerForm.get('customerAddress')?.invalid" style="margin-top: 3px">Customer Address is Required.</p>
     </div>
 
     <div class="button-wrap">
