@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-customer-page',
@@ -7,10 +8,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CustomerPageComponent implements OnInit {
 
+  customerForm: FormGroup = new FormGroup({
+    customerId: new FormControl(),
+    customerName: new FormControl(),
+    customerSalary: new FormControl(),
+    customerAddress: new FormControl(),
+  });
+
   constructor() {
   }
 
   ngOnInit(): void {
   }
 
+  saveCustomer() {
+    console.log(this.customerForm);
+  }
 }

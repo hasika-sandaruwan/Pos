@@ -8,6 +8,7 @@ import {CustomerPageComponent} from './components/common/customer-page/customer-
 import {ItemPageComponent} from './components/common/item-page/item-page.component';
 import {OrderPageComponent} from './components/common/order-page/order-page.component';
 import {OrderDetailsPageComponent} from './components/common/order-details-page/order-details-page.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {OrderDetailsPageComponent} from './components/common/order-details-page/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
