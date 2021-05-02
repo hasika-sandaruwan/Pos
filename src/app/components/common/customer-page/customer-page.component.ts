@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import CustomerDTO from "../../../dtos/CustomerDTO";
+import {CustomerService} from "../../../services/customer.service";
 
 @Component({
   selector: 'app-customer-page',
@@ -32,7 +33,7 @@ export class CustomerPageComponent implements OnInit {
     ]),
   });
 
-  constructor() {
+  constructor(private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
@@ -45,6 +46,13 @@ export class CustomerPageComponent implements OnInit {
       Number(this.customerForm.get('customerSalary')?.value),
       this.customerForm.get('customerAddress')?.value
     );
-    console.log(customer);
+
+    this.customerService.saveCustomer(customer).subscribe(resp => {
+      console.log(resp);
+    }, error => {
+      console.log(error);
+    });
+
+
   }
 }

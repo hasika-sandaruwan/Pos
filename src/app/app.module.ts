@@ -9,6 +9,7 @@ import {ItemPageComponent} from './components/common/item-page/item-page.compone
 import {OrderPageComponent} from './components/common/order-page/order-page.component';
 import {OrderDetailsPageComponent} from './components/common/order-details-page/order-details-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
