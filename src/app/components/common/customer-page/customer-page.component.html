@@ -51,12 +51,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <th>C-001</th>
-      <td>Nimal</td>
-      <td>25000</td>
-      <td>Panadura</td>
+    <tr *ngFor="let tempCustomer of customerArray; index as cNumber">
+      <th scope="row">{{cNumber + 1}}</th>
+      <th>{{tempCustomer.customerId}}</th>
+      <td>{{tempCustomer.customerName}}</td>
+      <td>{{tempCustomer.customerSalary}}</td>
+      <td>{{tempCustomer.customerAddress}}</td>
       <td>
         <button class="btn btn-danger btn-sm">Delete</button>
       </td>

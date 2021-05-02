@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import CustomerDTO from "../../../dtos/CustomerDTO";
-import {CustomerService} from "../../../services/customer.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import CustomerDTO from '../../../dtos/CustomerDTO';
+import {CustomerService} from '../../../services/customer.service';
 
 @Component({
   selector: 'app-customer-page',
@@ -36,7 +36,18 @@ export class CustomerPageComponent implements OnInit {
   constructor(private customerService: CustomerService) {
   }
 
+  customerArray: CustomerDTO[] = [];
+
   ngOnInit(): void {
+    this.loadAllCustomers();
+  }
+
+  private loadAllCustomers() {
+    this.customerService.getAllCustomers().subscribe(resp => {
+      this.customerArray = resp.dataSet;
+    }, error => {
+      console.log(error);
+    });
   }
 
   saveCustomer() {
@@ -49,6 +60,9 @@ export class CustomerPageComponent implements OnInit {
 
     this.customerService.saveCustomer(customer).subscribe(resp => {
       console.log(resp);
+      if (resp.state === true) {
+        alert('Saved');
+      }
     }, error => {
       console.log(error);
     });
