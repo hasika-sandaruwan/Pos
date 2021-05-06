@@ -27,4 +27,8 @@ export class CustomerService {
     return this.http.get(this.baseUrl + 'customerRoute/getAllCustomers');
   }
 
+  public deleteCustomer(id: string): Observable<any> {
+    return this.http.delete(this.baseUrl + 'customerRoute/deleteCustomer', {headers: {id}});
+  }
+
 }
