@@ -10,6 +10,10 @@ import {OrderPageComponent} from './components/common/order-page/order-page.comp
 import {OrderDetailsPageComponent} from './components/common/order-details-page/order-details-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTabsModule} from "@angular/material/tabs";
+import {AlertUIComponent} from './components/share/alert-ui/alert-ui.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -18,13 +22,17 @@ import {HttpClientModule} from "@angular/common/http";
     CustomerPageComponent,
     ItemPageComponent,
     OrderPageComponent,
-    OrderDetailsPageComponent
+    OrderDetailsPageComponent,
+    AlertUIComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

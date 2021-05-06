@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import CustomerDTO from '../../../dtos/CustomerDTO';
 import {CustomerService} from '../../../services/customer.service';
+import {MatDialog} from "@angular/material/dialog";
+import {AlertUIComponent} from "../../share/alert-ui/alert-ui.component";
 
 @Component({
   selector: 'app-customer-page',
@@ -33,7 +35,7 @@ export class CustomerPageComponent implements OnInit {
     ]),
   });
 
-  constructor(private customerService: CustomerService) {
+  constructor(public dialog: MatDialog, private customerService: CustomerService) {
   }
 
   customerArray: CustomerDTO[] = [];
@@ -69,4 +71,27 @@ export class CustomerPageComponent implements OnInit {
 
 
   }
+
+
+  deleteCustomer(c: CustomerDTO) {
+    /* if (confirm('Are you sure?')){
+       alert('delete');
+     }else{
+       alert('closed by user');
+     }*/
+    this.openDialog(c);
+  }
+
+  openDialog(c: CustomerDTO): void {
+    const dialogRef = this.dialog.open(AlertUIComponent, {
+      data: {
+        customerId: c.customerId,
+        customerName: c.customerName,
+        customerSalary: c.customerSalary,
+        customerAddress: c.customerAddress,
+      }
+    });
+  }
+
+
 }
