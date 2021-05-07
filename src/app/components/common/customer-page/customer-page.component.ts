@@ -12,6 +12,9 @@ import {AlertUIComponent} from '../../share/alert-ui/alert-ui.component';
 })
 export class CustomerPageComponent implements OnInit {
 
+  constructor(public dialog: MatDialog, private customerService: CustomerService) {
+  }
+
   customerForm: FormGroup = new FormGroup({
     customerId: new FormControl(null, [
       Validators.required,
@@ -46,10 +49,10 @@ export class CustomerPageComponent implements OnInit {
     salary: new FormControl(this.salary, [Validators.required])
   });
 
-  constructor(public dialog: MatDialog, private customerService: CustomerService) {
-  }
-
   customerArray: CustomerDTO[] = [];
+
+  // @ts-ignore
+  customer: CustomerDTO = null;
 
   ngOnInit(): void {
     this.loadAllCustomers();
@@ -124,6 +127,14 @@ export class CustomerPageComponent implements OnInit {
     );
     this.customerService.updateCustomer(dto).subscribe(resp => {
       alert(resp.message);
+    }, error => {
+      alert(error);
+    });
+  }
+
+  search(value: string) {
+    this.customerService.getCustomer(value).subscribe(resp => {
+      this.customer = resp.data;
     }, error => {
       alert(error);
     });

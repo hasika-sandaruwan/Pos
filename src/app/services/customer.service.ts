@@ -40,4 +40,7 @@ export class CustomerService {
     });
   }
 
+  public getCustomer(id: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'customerRoute/getCustomer', {headers: {id}});
+  }
 }
