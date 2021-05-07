@@ -116,6 +116,16 @@ export class CustomerPageComponent implements OnInit {
   }
 
   update() {
-
+    const dto = new CustomerDTO(
+      this.id,
+      this.name,
+      this.salary,
+      this.address
+    );
+    this.customerService.updateCustomer(dto).subscribe(resp => {
+      alert(resp.message);
+    }, error => {
+      alert(error);
+    });
   }
 }
