@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import CustomerDTO from '../../../dtos/CustomerDTO';
 import {CustomerService} from '../../../services/customer.service';
-import {MatDialog} from "@angular/material/dialog";
-import {AlertUIComponent} from "../../share/alert-ui/alert-ui.component";
+import {MatDialog} from '@angular/material/dialog';
+import {AlertUIComponent} from '../../share/alert-ui/alert-ui.component';
 
 @Component({
   selector: 'app-customer-page',
@@ -33,6 +33,17 @@ export class CustomerPageComponent implements OnInit {
       Validators.maxLength(100),
       Validators.minLength(10)
     ]),
+  });
+  id = '';
+  name = '';
+  address = '';
+  salary = 0;
+
+  updateForm: FormGroup = new FormGroup({
+    id: new FormControl(this.id, [Validators.required]),
+    name: new FormControl(this.name, [Validators.required]),
+    address: new FormControl(this.address, [Validators.required]),
+    salary: new FormControl(this.salary, [Validators.required])
   });
 
   constructor(public dialog: MatDialog, private customerService: CustomerService) {
@@ -94,4 +105,17 @@ export class CustomerPageComponent implements OnInit {
   }
 
 
+  updateCustomer(tc: CustomerDTO) {
+    this.id = tc.customerId;
+    this.name = tc.customerName;
+    this.address = tc.customerAddress;
+    this.salary = tc.customerSalary;
+
+    document.getElementById('launchButton')?.click();
+
+  }
+
+  update() {
+
+  }
 }
